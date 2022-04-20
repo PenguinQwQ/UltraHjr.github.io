@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"ultrahjr.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="一些历史&#x2F;杂七杂八QT是一个跨平台的C++图形用户界面应用程序框架 Linux的操作界面是由QT编写的 支持Windows、Unix、Embedded（嵌入式）、Max Os vs的默认格式是GB2312的，Mingw的默认格式是UTF8，这就解释了cpp文件在vs和dev cpp下分别打开为什么会出现中文的乱码 Qt基础内容QApplication是 包含一个应用程序类的头文件 mai">
+  <meta name="description" content="一、一些历史&#x2F;杂七杂八QT是一个跨平台的C++图形用户界面应用程序框架 Linux的操作界面是由QT编写的 支持Windows、Unix、Embedded（嵌入式）、Max Os vs的默认格式是GB2312的，Mingw的默认格式是UTF8，这就解释了cpp文件在vs和dev cpp下分别打开为什么会出现中文的乱码 二、Qt基础内容QApplication是 包含一个应用程序类的头文件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Learning notes on QT">
+<meta property="og:title" content="Learning Notes On Qt&#x2F;项目研究笔记">
 <meta property="og:url" content="https://ultrahjr.github.io/2022/04/11/Learning-notes-on-QT/index.html">
 <meta property="og:site_name" content="Wind&#39;s Blog">
-<meta property="og:description" content="一些历史&#x2F;杂七杂八QT是一个跨平台的C++图形用户界面应用程序框架 Linux的操作界面是由QT编写的 支持Windows、Unix、Embedded（嵌入式）、Max Os vs的默认格式是GB2312的，Mingw的默认格式是UTF8，这就解释了cpp文件在vs和dev cpp下分别打开为什么会出现中文的乱码 Qt基础内容QApplication是 包含一个应用程序类的头文件 mai">
+<meta property="og:description" content="一、一些历史&#x2F;杂七杂八QT是一个跨平台的C++图形用户界面应用程序框架 Linux的操作界面是由QT编写的 支持Windows、Unix、Embedded（嵌入式）、Max Os vs的默认格式是GB2312的，Mingw的默认格式是UTF8，这就解释了cpp文件在vs和dev cpp下分别打开为什么会出现中文的乱码 二、Qt基础内容QApplication是 包含一个应用程序类的头文件">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-11T11:18:47.000Z">
-<meta property="article:modified_time" content="2022-04-15T14:12:25.426Z">
+<meta property="article:modified_time" content="2022-04-19T12:55:59.859Z">
 <meta property="article:author" content="Wind">
 <meta name="twitter:card" content="summary">
 
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>Learning notes on QT | Wind's Blog</title>
+  <title>Learning Notes On Qt/项目研究笔记 | Wind's Blog</title>
   
 
 
@@ -189,7 +189,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Learning notes on QT
+          Learning Notes On Qt/项目研究笔记
         </h1>
 
         <div class="post-meta">
@@ -206,7 +206,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-15 22:12:25" itemprop="dateModified" datetime="2022-04-15T22:12:25+08:00">2022-04-15</time>
+                <time title="修改时间：2022-04-19 20:55:59" itemprop="dateModified" datetime="2022-04-19T20:55:59+08:00">2022-04-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,11 +229,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="一些历史-x2F-杂七杂八"><a href="#一些历史-x2F-杂七杂八" class="headerlink" title="一些历史&#x2F;杂七杂八"></a>一些历史&#x2F;杂七杂八</h2><p>QT是一个跨平台的C++图形用户界面应用程序框架</p>
+        <h2 id="一、一些历史-x2F-杂七杂八"><a href="#一、一些历史-x2F-杂七杂八" class="headerlink" title="一、一些历史&#x2F;杂七杂八"></a>一、一些历史&#x2F;杂七杂八</h2><p>QT是一个跨平台的C++图形用户界面应用程序框架</p>
 <p>Linux的操作界面是由QT编写的</p>
 <p>支持Windows、Unix、Embedded（嵌入式）、Max Os</p>
 <p>vs的默认格式是GB2312的，Mingw的默认格式是UTF8，这就解释了cpp文件在vs和dev cpp下分别打开为什么会出现中文的乱码</p>
-<h2 id="Qt基础内容"><a href="#Qt基础内容" class="headerlink" title="Qt基础内容"></a>Qt基础内容</h2><p>QApplication是 包含一个应用程序类的头文件</p>
+<h2 id="二、Qt基础内容"><a href="#二、Qt基础内容" class="headerlink" title="二、Qt基础内容"></a>二、Qt基础内容</h2><p>QApplication是 包含一个应用程序类的头文件</p>
 <p>main函数，是程序的入口。</p>
 <p>argc命令行变量的数量， argv命令行变量的数组</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">QApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line">myWidget w;<span class="comment">//创建一个窗口对象w， 其父类为Qwidget</span></span><br><span class="line"><span class="comment">//对于窗口对象w，调用一个show方法</span></span><br><span class="line">w.<span class="built_in">show</span>();</span><br><span class="line"><span class="keyword">return</span> a.<span class="built_in">exec</span>();<span class="comment">//让代码阻塞到这行来，不会往下运行了，会时刻捕捉当前的用户信息</span></span><br></pre></td></tr></table></figure>
@@ -307,6 +307,147 @@
 <li>QWidget是能够在屏幕上显示的一切组件的父类。</li>
 <li>QQWidget继承自QObject，因此也继承了这种对象树的关系。一个孩子自动地称为父组件的一个子组件。因此，它会显示在父组件的坐标系统里。被父组件的边界剪裁。例如，当用户关闭一个对话框的时候，应用程序将其删除，那么，我们希望属于这个对话框的按钮、图标等应该一起被删除。事实就是如此，因为这些都是对话框的子组件。</li>
 </ul>
+<p>打印字符</p>
+<p>调用#include <QDebug>库，然后再对应的位置：qDebug () &lt;&lt; “析构调用” &lt;&lt; …</p>
+<p>在对象树结构的析构下，它会类似进行一个广度优先搜索的析构方式。会遍历整颗被析构的对象树，并将树上的节点逐一释放。</p>
+<p>当创建的对象在堆区的时候，如果指定的父亲是QObject派生下来的类，或者QObject的子类派生下来的类，可以不用管理释放的操作，因为它会将对象放到对象树中，完成逐级析构。</p>
+<p>对象树的机制，一定程度下简化了内存回收的机制。</p>
+<h2 id="QT的窗口坐标体系"><a href="#QT的窗口坐标体系" class="headerlink" title="QT的窗口坐标体系"></a>QT的窗口坐标体系</h2><p>以左上角为原点（0,0）,X向右增加，Y向下增加。对于嵌套窗口，其坐标是相对于父窗口而言的。</p>
+<h2 id="三、信号与槽"><a href="#三、信号与槽" class="headerlink" title="三、信号与槽"></a>三、信号与槽</h2><h3 id="连接函数和槽函数的基本写法"><a href="#连接函数和槽函数的基本写法" class="headerlink" title="连接函数和槽函数的基本写法"></a>连接函数和槽函数的基本写法</h3><p>先提供一个案例：对于我们上述生成的按钮，点击后是没有任何作用的。现在，我们提供一个需求：点击我的按钮，我们就能够将窗口关掉。</p>
+<p>那么，要完成上述需求，我们给出如下连贯的定义与操作：按钮-点击-窗口-关闭窗口。</p>
+<p>上述过程可以抽象为，一个Connect(信号的发送者，发送的具体信号，信号的接收者，信号的处理（槽）)</p>
+<p>其实，信号和槽中的槽，就是一个处理信号的槽函数。一般来说，信号的处理就是槽函数给出的处理方式。</p>
+<p>信号和槽的优点：松散耦合，指信号的发送端和接收端本身是没有什么关联的，通过一个Connect函数连接，将两端耦合在一起。感性认识上，按钮点击不一定会发出信号，因为完全可以点击一些别的按钮。而窗口的关闭也并不仅仅依赖于唯一的处理方式，而可以有其他的关闭窗口的方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//参数1 信号的发送者 参数2 发送的信号(signal, 存放的是函数的地址， 以&amp; + 类名 + ::信号名， 参数3 信号的接收者 参数4 槽函数：找到这个函数的地址</span><br><span class="line">connect( mybtn , &amp;QPushButton::clicked , this , &amp;QWidget::close ) ;  </span><br></pre></td></tr></table></figure>
+
+<p>根据帮助文档，可以去尝试着找部分对象的信号出来。当然，不一定能直接在当前类的体系下找到，那么相应的signal可能就存在于其父类、爷爷类的内部了。可以这样去寻找</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cilcked()</span><br><span class="line">press() //按下</span><br><span class="line">release() //释放</span><br><span class="line">toggled() //切换</span><br></pre></td></tr></table></figure>
+
+<p>这就实现了一个Connect的功能！这就是连接函数的用法。接下来介绍的是Connect的四个参数。</p>
+<p>注意：找函数的时候，一定要装入函数的地址！</p>
+<h3 id="自定义信号和槽"><a href="#自定义信号和槽" class="headerlink" title="自定义信号和槽"></a>自定义信号和槽</h3><p>不属于任何部分的话，可以将其放到基类下QObject。</p>
+<p>我们模拟如下的过程：写一个老师类和学生类，下课后，老师发出一个信号，饿了。接收者为学生，执行动作（槽函数）为请客吃饭</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注意，在QT中新生成一个类的同时，除了public、private之外，还会要求我们写signals和public slots，这是在要求我们自定义信号和槽的内容，我们可以根据需求实现上述功能</span></span><br><span class="line"><span class="comment">//自定义信号，写到signals下，返回值是void，信号的头文件只需要声明，不需要写实现（连在cpp中都不需要），另外，这个信号是可以有参数的，也可以重载。</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Teacher</span> : <span class="keyword">public</span> QObject</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">Teacher</span><span class="params">(QObject *parent = <span class="number">0</span>)</span></span>;</span><br><span class="line"> signals:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">hungry</span><span class="params">()</span></span>;</span><br><span class="line"> <span class="keyword">public</span> slots:</span><br><span class="line">    <span class="comment">//槽函数的返回值也是void，是需要声明，也需要在cpp中实现的。</span></span><br><span class="line">    <span class="comment">//可以有参数，可以发生重载</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">treat</span><span class="params">()</span></span>;<span class="comment">//做了声明，那么就在cpp上实现</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>注意，slot槽函数可以写到public或public slots下。（早期只能写到后者）</p>
+<p>而如果我们写为如下格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect(zt, &amp;Teacher::hungry , st , &amp;Student::treat);</span><br></pre></td></tr></table></figure>
+
+<p>最后是没有显示的，因为，这个hungry的信号并不会发生！可以理解为，没有点击按钮，何来将窗口页面关闭的功能呢？</p>
+<p>所以，此时可以加一个函数，这个函数的功能是，调用之后就会触发老师饿了的信号。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void Widget::ClassIsOver()</span><br><span class="line">&#123;</span><br><span class="line">	emit zt-&gt;hungry();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意，即使完成了上述代码，也不能打印出“请老师吃饭”的信号，因为，需要在连接之后再调用才能有所反应。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">this-&gt;zt = new Teacher(this);</span><br><span class="line">this-&gt;st = new Student(this);</span><br><span class="line">connect(this-&gt;zt, &amp;Teacher::hungry , this-&gt;st, &amp;Student::treat);</span><br><span class="line">ClassIsOver();</span><br></pre></td></tr></table></figure>
+
+<p>总结如下：</p>
+<p>我们自定义的信号必须写在signal下。所有的信号函数返回值都必须是void。可以有参数可以无参数，只需要声明，不能在cpp中实现。</p>
+<p>槽函数需要在.h文件中声明，也需要在cpp中实现。（需要处理后续的操作嘛）</p>
+<p>在Widget.cpp中，创建了老师也创建了学生，之后再让这两者连接一下，调用下课函数，触发饿了信号，然后就能看到“请老师吃饭”这一信号了。</p>
+<p>注意，触发自己定义的信号，可以用emit来实现！</p>
+<h3 id="自定义信号和槽的重载"><a href="#自定义信号和槽的重载" class="headerlink" title="自定义信号和槽的重载"></a>自定义信号和槽的重载</h3><p>void hungry(QString foodName);</p>
+<p>这里在信号&#x2F;槽的函数声明中可以加上字符串参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void Student::treat(QString foodName)</span><br><span class="line">&#123;</span><br><span class="line">	QDebug() &lt;&lt; &quot;请老师吃饭， 老师要吃&quot; &lt;&lt; foodName ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于发出信号的函数，可以改写为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void WIdget::ClassIsOver()</span><br><span class="line">&#123;</span><br><span class="line">	emit zt-&gt;hungry(&quot;宫保鸡丁&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于连接函数，可以改写为：</p>
+<p>首先，指针可以指向函数的地址，我们需要的是函数的地址，所以可以声明一个函数指针来指向函数的地址。</p>
+<p>注：函数指针的声明方式为：  函数的返回值类型 (*函数名) (函数的具体参数格式)</p>
+<p>例：in (*p) (int, int)，这里声明的函数指针，就是指向了一个返回值为int类型的函数，且这个函数的参数是两个int类型的参数。</p>
+<p>当我们在声明一个成员函数的函数地址的时候，还需要加上这个函数的作用域。我们需要告诉指针，你所指向的这个函数是在某个特定作用域下的函数！这样这个函数指针才能识别这个</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">void</span> (Teacher:: *teacherSignal) (QString) = &amp;teacher::hungry;</span><br><span class="line"><span class="built_in">void</span> (STudent:: *studentslot) (QString) = %student::treat;</span><br><span class="line"><span class="built_in">connect</span>(zt, teacherSignal, st, studentSlots);</span><br></pre></td></tr></table></figure>
+
+<p><strong>所以，如果出现了重载，那么在连接函数的时候就需要通过函数指针处理一下。</strong></p>
+<p>注意，如果打印的是QString类型，会自动给你填上引号。不过可以将其转化为char*的字符串类型。</p>
+<p>一种方式是在QString后面调用一下.toUtf8()，本质是先将QString转化为QByteArray， 再转为Char *。这里可以先转化为ByteArray， 然后再调用data就可以了。</p>
+<p>如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">QDebug</span>() &lt;&lt; <span class="string">&quot;请老师吃饭，老师要吃：&quot;</span> &lt;&lt; foodName.<span class="built_in">toUtf8</span>().<span class="built_in">data</span>() ;</span><br></pre></td></tr></table></figure>
+
+<p>QString转化为Char *的一种方法。</p>
+<h3 id="信号连接信号"><a href="#信号连接信号" class="headerlink" title="信号连接信号"></a>信号连接信号</h3><p>我们想让老师按下课按钮之后，再下课。可以自定义一个按钮，然后检测这个按钮是否被点击了，如果被点击了，就对当前的窗口类执行ClassIsOver函数，进而触发老师饿了的信号。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QPushButton * btn = new QPushButton(&quot;下课&quot;, this);</span><br><span class="line">connect(btn, &amp;QPushButton::clicked, this, &amp;Widget::ClassIsOver);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>相当于点击按钮之后，触发下课函数，进而使得老师发出hugry信号，引发槽函数的调用。本质是直接让Click这个信号连接学生请客这个槽。</p>
+<p>其实，我们有另一种操作：将信号和信号相连，然后再让这个信号和槽连接。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect(btn, &amp;QPushButton::clicked, zt, &amp;Teacher::hungry);//让click信号和hungry信号相连</span><br></pre></td></tr></table></figure>
+
+<p>这样，当btn检测到被点击的信号的时候，会直接引发hungry信号。而不需要ClassIsOver这个槽函数作为过渡，去激发下一轮的信号。上面前一个例子，是将btn检测到按钮clicked的信号之后，传递到当前窗口界面调用ClassIsOver函数，进而实现下一轮信号的触发。这里，窗口界面类作为接收者，其ClassIsOver函数就相当于槽函数了！</p>
+<p>断开信号：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">disconnect(...)</span><br></pre></td></tr></table></figure>
+
+<p>disconnect的内容，跟当初connect的内容是一样的。这样就能够实现信号的断开了。</p>
+<p>这里可以进行信号的传递。</p>
+<h3 id="信号与槽的补充知识"><a href="#信号与槽的补充知识" class="headerlink" title="信号与槽的补充知识"></a>信号与槽的补充知识</h3><ul>
+<li>信号是可以连接信号的</li>
+<li>一个信号是可以连接多个槽函数的。也就是，当信号的输出者触发某个信号的时候，可能会带来一系列的后果。</li>
+<li>多个信号可以连接同一个槽函数。可以通过多种不同方式触发同一个槽函数。</li>
+<li>信号和槽函数的参数必须一一对应。可以形象地用“槽”的形状来理解，信号提供的“参数插口”必须和槽的“参数接口相同的”。不过，信号和槽的参数个数，不一定是要一致的。信号的参数个数可以比槽的参数更多，而槽函数的参数个数不能多于信号的参数个数。可以理解为，槽函数需要知道一系列细节来执行操作，如果信号内部没有给出对应的参数信息，那么就不能执行对应的操作。</li>
+<li>槽函数和信号在类型上必须严格地一致！如Click的参数，是需要一个Bool类型的。</li>
+</ul>
+<h2 id="四、QMainWindow"><a href="#四、QMainWindow" class="headerlink" title="四、QMainWindow"></a>四、QMainWindow</h2><p>QMainWindow是一个为用户提供主窗口程序的类，它包含一个菜单栏、多个工具栏、多个锚接部件（可以浮动）、一个状态栏（位于下方）以及一个中心部件（Central Widget），是许多应用程序的基础，比如文本编辑器，图片编辑器等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">//菜单栏创建</span><br><span class="line">QMenuBar * bar = menuBar();</span><br><span class="line">//将菜单栏放入到窗口中，源码已经将菜单栏放到对象树上了</span><br><span class="line">setMenuBar(bar);//空的，不会显示</span><br><span class="line">//创建菜单</span><br><span class="line">bar-&gt;addMenu(&quot;Flie&quot;);</span><br><span class="line">//这时就会多添加一个菜单了</span><br><span class="line">//创建菜单项</span><br><span class="line">fileMenu-&gt;addAction(&quot;新建&quot;);</span><br><span class="line">//这样在菜单栏的最上面，点开文件菜单，会看到“新建”的菜单项目。</span><br><span class="line">//我们可以利用菜单项来添加分隔符</span><br><span class="line">fileMenu-&gt;addSeparator();//这就是添加分割线，菜单栏里面的打开和新建之间就会有一个分割线</span><br><span class="line">fileMenu-&gt;addAction(&quot;打开&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//工具栏创建，可以有多个</span><br><span class="line">QToolBar * toolBar = new QToolBar(this);//生成工具栏，放到对象树上，可以不用管释放</span><br><span class="line">addToolBar(toolBar);//这样就能将工具栏添加到界面上了！</span><br><span class="line">//细节，报错invalid use of... 一般是没有用头文件引起的。</span><br><span class="line">//我们还可以设置工具栏在图形化界面上所处的位置！</span><br><span class="line">addToolBar(Qt::LeftToolBarArea, toolBar);//这里前一个参数是在设置工具栏的位置，后一个是我们的工具栏指针。</span><br><span class="line">//一般，QT中的所有枚举值都是Qt::可以打出来！</span><br><span class="line"></span><br><span class="line">//后期设置，只允许左右停靠</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="五、资源文件的补充"><a href="#五、资源文件的补充" class="headerlink" title="五、资源文件的补充"></a>五、资源文件的补充</h2><h3 id="图片文件"><a href="#图片文件" class="headerlink" title="图片文件"></a>图片文件</h3><p>首先需要将图片文件拷贝到项目位置下，然后右键项目，添加新文件，QT-&gt;QTResource File，然后给资源文件起名，再用res生成res.qre</p>
+<p>后续可以用Open in editor打开 编辑资源。</p>
+<p>可以先添加前缀，再添加文件。</p>
+<h1 id="框架代码阅读"><a href="#框架代码阅读" class="headerlink" title="框架代码阅读"></a>框架代码阅读</h1><h2 id="0-形而上的理解："><a href="#0-形而上的理解：" class="headerlink" title="0.形而上的理解："></a>0.形而上的理解：</h2><p>所有游戏中看得见与看不见的物体，统称为游戏对象，而所有这些游戏对象共同组成游戏场景。</p>
+<p>GameObject类对应游戏对象，GameObject下挂载的Component负责执行游戏逻辑并更新游戏场景。</p>
+<p>GameScene类对应游戏场景，处理显示和渲染部分的操作。</p>
+<p>Component类对应游戏对象所拥有的一些属性，例如玩家操作的人物需要显示表示玩家的图片、可以通过键盘移动、可以受到炸弹伤害等等。</p>
+<p>其中，一个GameObject最多只有一个Transform Component，对应游戏对象的绘制。</p>
+<h2 id="1-以圆的绘制为例"><a href="#1-以圆的绘制为例" class="headerlink" title="1.以圆的绘制为例"></a>1.以圆的绘制为例</h2><p>在框架的mainwindow.cpp的loadScene()中，加上：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;QGraphicsEllipseItem&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">loadScene</span><span class="params">(GameScene *scene)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">auto</span> obj = <span class="keyword">new</span> <span class="built_in">GameObject</span>();<span class="comment">//新建一个游戏对象obj</span></span><br><span class="line"><span class="keyword">auto</span> transform = <span class="keyword">new</span> <span class="built_in">Transform</span>();<span class="comment">//新建了一个游戏对象的显示组件</span></span><br><span class="line"><span class="keyword">auto</span> circle = <span class="keyword">new</span> <span class="built_in">QGraphicsEllipseItem</span>(transform);<span class="comment">//实例化一个QGraphicsEllipseItem，挂载到transform下用于绘制一个圆</span></span><br><span class="line">circle-&gt;<span class="built_in">setRect</span>(<span class="number">-5</span>, <span class="number">-5</span>, <span class="number">10</span>, <span class="number">10</span>);<span class="comment">//这是QGraphicsEllipseItem中的函数setRect，四个参数是x,y和w,h。(x,y)用来显示其坐标，w和h分别表示这个圆的宽和高，当w=h的时候，也就是一个圆了，当w!=h的时候，将会是一个椭圆</span></span><br><span class="line">transform-&gt;<span class="built_in">setPos</span>(<span class="number">100</span>,<span class="number">100</span>);<span class="comment">//这是在将游戏对象的Transform组件移动到场景的(100,100)处</span></span><br><span class="line">obj-&gt;<span class="built_in">addComponent</span>(transform);<span class="comment">//对于我们刚刚定义的游戏对象obj，将transform组件挂载到obj上，使其具有相应的绘图的性质</span></span><br><span class="line">scene-&gt;<span class="built_in">attachGameObject</span>(obj);<span class="comment">//这是在将obj游戏对象挂载到当前游戏场景上</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从上面这个例子，我们可以总结出框架为我们提供的功能。</p>
+<p>首先，声明一个游戏对象的写法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> Obj = <span class="keyword">new</span> <span class="built_in">GameObject</span>();</span><br></pre></td></tr></table></figure>
+
+<p>这里新声明了一个游戏对象，并用auto关键字声明了一个指向这个游戏对象的指针。</p>
+<p>其次，声明某个游戏对象的显示组件：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> transform = <span class="keyword">new</span> <span class="built_in">Transform</span>();</span><br></pre></td></tr></table></figure>
+
+<p>这样就声明出了一个游戏对象的显示组件</p>
+<p>对于显示组件的移动：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform-&gt;<span class="built_in">setPos</span>(x,y);</span><br></pre></td></tr></table></figure>
+
+<p>这是将显示组件运送到(x,y)处</p>
+<p>对于将组件挂载到游戏对象上的写法：可以通过组件挂载函数addComponent和目标挂载组件transform结合来实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Obj-&gt;<span class="built_in">addComponent</span>(transform);</span><br></pre></td></tr></table></figure>
+
+<p>然后，还可以将游戏对象挂载到游戏场景上，这样就能够在游戏场景的MainWindow上显示出来了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scene-&gt;<span class="built_in">attachGameObject</span>(obj);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-如何加载图片？"><a href="#2-如何加载图片？" class="headerlink" title="2.如何加载图片？"></a>2.如何加载图片？</h2><p>给出如下代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;transformbuilder.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">loadScene</span><span class="params">(GameScene *scene)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">auto</span> obj = <span class="keyword">new</span> <span class="built_in">GameObject</span>();<span class="comment">//新声明一个游戏对象</span></span><br><span class="line">	<span class="built_in">ImageTransformBuilder</span>()</span><br><span class="line">		.<span class="built_in">setPos</span>(<span class="built_in">QPointF</span>(<span class="number">100</span>, <span class="number">100</span>))<span class="comment">//这里是图片显示的坐标</span></span><br><span class="line">		.<span class="built_in">setImage</span>(<span class="string">&quot;C:/project/image/enemy.png&quot;</span>)<span class="comment">//这里是图片显示的路径</span></span><br><span class="line">		.<span class="built_in">setAlignment</span>(Qt::AlignCenter)<span class="comment">//这样图片的正中心就位于(100,100)</span></span><br><span class="line">		.<span class="built_in">addToGameObject</span>(obj);<span class="comment">//将这个组件挂载到游戏对象身上</span></span><br><span class="line">	scene-&gt;<span class="built_in">attachGameObject</span>(obj);<span class="comment">//将游戏对象挂载到游戏场景中</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Qt::AlignLeft | Qt::AlignTop可以用于指定图片的左上角位于(x,y)处</span></span><br></pre></td></tr></table></figure>
+
+<p>注意，这里必须要用右斜杠，因为Windows默认路径设置为左斜杠，在设置路径的时候一定注意！</p>
+<p>上述代码是绝对路径下的图片加载，然而我们在做gitpush的时候，是不能将本地的资源文件push到github classroom里的。我们需要做的是，使用相对路径的方式。</p>
+<h3 id="关于Qt资源文件qrc的使用"><a href="#关于Qt资源文件qrc的使用" class="headerlink" title="关于Qt资源文件qrc的使用"></a>关于Qt资源文件qrc的使用</h3><p>通过Qt Creator添加资源文件.qrc的方式，可以实现非绝对路径添加图片的操作。我们需要在工程目录下加载图片，然后保存到资源文件.qrc中。这样，最终编译出的图片数据会以二进制格式存储在.qrc中。</p>
+<p>关于.qrc的使用：</p>
+<ul>
+<li>先在Qt Creator中创建资源库，生成一个.qrc文件</li>
+<li>然后，一定需要编辑一系列Prefix作为前缀。该步骤的本质是在分类。</li>
+<li>然后，在工程目录对应的文件夹下载入资源文件</li>
+<li>在Qt Creator的对应资源文件中，载入所需的图片资源。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> obj = <span class="keyword">new</span> <span class="built_in">GameObject</span>();</span><br><span class="line"><span class="built_in">ImageTransformBuilder</span>()</span><br><span class="line">        .<span class="built_in">setPos</span>(<span class="built_in">QPointF</span>(<span class="number">100</span>, <span class="number">100</span>))<span class="comment">//设置添加图片的坐标</span></span><br><span class="line">        .<span class="built_in">setImage</span>(<span class="string">&quot;:/image/pics/1.png&quot;</span>)<span class="comment">//设置添加图片的间接路径</span></span><br><span class="line">        .<span class="built_in">setAlignment</span>(Qt::AlignCenter)<span class="comment">//设置图片的位置，以(100,100)作为图片的中心点</span></span><br><span class="line">        .<span class="built_in">addToGameObject</span>(obj);<span class="comment">//将这个图片性质的配件挂载到游戏对象obj上</span></span><br><span class="line">gameScene-&gt;<span class="built_in">attachGameObject</span>(obj);<span class="comment">//将游戏对象挂载到游戏环境中</span></span><br></pre></td></tr></table></figure>
+
+<p>上面就是一个简单的写法，注意，在相对路径的添加时，格式为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;冒号+/Prefix+/folders+/xxx.png&quot;,eg:&quot;/image/pics/Minecraft.png&quot;</span><br></pre></td></tr></table></figure>
+
+<p>关于图片大小的调整：手动画图hhh（（（</p>
+<h2 id="3-让圆动起来"><a href="#3-让圆动起来" class="headerlink" title="3. 让圆动起来"></a>3. 让圆动起来</h2><p>为了让圆动起来，不妨创建一个新的Componenet:Physics</p>
+<p>我们希望给Physics组件设置一个速度后，能让GameObject以这个速度一致持续下去</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> obj = <span class="keyword">new</span> <span class="built_in">GameObject</span>();</span><br><span class="line"><span class="keyword">auto</span> transform = <span class="keyword">new</span> <span class="built_in">Transform</span>();</span><br><span class="line"><span class="keyword">auto</span> circle = <span class="keyword">new</span> <span class="built_in">QGraphicsEllipseItem</span>(transform);</span><br><span class="line">circle −&gt;<span class="built_in">setRect</span> (−<span class="number">5</span>,−<span class="number">5</span>,<span class="number">10</span>,<span class="number">10</span>) ;</span><br><span class="line">transform−&gt;<span class="built_in">setPos</span> (<span class="number">100</span>,<span class="number">100</span>);</span><br><span class="line">obj−&gt;<span class="built_in">addComponent</span> (transform);</span><br><span class="line">obj−&gt;<span class="built_in">addComponent</span> (<span class="keyword">new</span> <span class="built_in">Physics</span>());</span><br><span class="line">obj−&gt;<span class="built_in">addComponent</span> (<span class="keyword">new</span> <span class="built_in">UserController</span>());</span><br><span class="line">gameScene−&gt;<span class="built_in">attachGameObject</span> (obj);</span><br></pre></td></tr></table></figure>
+
+<p>注意，Physic组件用来控制游戏对象的物理特性，包括位移速度等等</p>
+<p>而Usercontroller组件用来表示游戏对象是否会受到玩家的控制。</p>
 
     </div>
 
@@ -322,8 +463,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/04/04/%E6%97%A5%E7%A8%8B%E8%A1%A8%E4%B8%8E%E5%BE%85%E5%8A%9E%E4%BA%8B%E9%A1%B9/" rel="prev" title="日程表与待办事项">
-      <i class="fa fa-chevron-left"></i> 日程表与待办事项
+    <a href="/2022/04/04/%E7%94%9F%E6%B4%BB%E8%A7%84%E5%88%921/" rel="prev" title="学习计划（大一下）">
+      <i class="fa fa-chevron-left"></i> 学习计划（大一下）
     </a></div>
       <div class="post-nav-item">
     <a href="/2022/04/11/%E6%B3%A1%E6%B3%A1%E5%A0%82%E9%A1%B9%E7%9B%AE%EF%BC%9A%E7%9F%A5%E8%AF%86%E7%9B%B8%E5%85%B3/" rel="next" title="泡泡堂项目：知识相关">
@@ -387,7 +528,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%8E%86%E5%8F%B2-x2F-%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB"><span class="nav-number">1.</span> <span class="nav-text">一些历史&#x2F;杂七杂八</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Qt%E5%9F%BA%E7%A1%80%E5%86%85%E5%AE%B9"><span class="nav-number">2.</span> <span class="nav-text">Qt基础内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pro%E6%96%87%E4%BB%B6%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="nav-number">2.1.</span> <span class="nav-text">.pro文件的解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E7%9A%84Qt%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="nav-number">2.2.</span> <span class="nav-text">标准的Qt文件内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">2.3.</span> <span class="nav-text">一些快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAQpushbutton"><span class="nav-number">2.4.</span> <span class="nav-text">实现一个Qpushbutton</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%AF%B9%E8%B1%A1%E6%A0%91%EF%BC%89"><span class="nav-number">2.5.</span> <span class="nav-text">对象模型（对象树）</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%B8%80%E4%BA%9B%E5%8E%86%E5%8F%B2-x2F-%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB"><span class="nav-number">1.</span> <span class="nav-text">一、一些历史&#x2F;杂七杂八</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Qt%E5%9F%BA%E7%A1%80%E5%86%85%E5%AE%B9"><span class="nav-number">2.</span> <span class="nav-text">二、Qt基础内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pro%E6%96%87%E4%BB%B6%E7%9A%84%E8%A7%A3%E9%87%8A"><span class="nav-number">2.1.</span> <span class="nav-text">.pro文件的解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E5%87%86%E7%9A%84Qt%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="nav-number">2.2.</span> <span class="nav-text">标准的Qt文件内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">2.3.</span> <span class="nav-text">一些快捷键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AAQpushbutton"><span class="nav-number">2.4.</span> <span class="nav-text">实现一个Qpushbutton</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%AF%B9%E8%B1%A1%E6%A0%91%EF%BC%89"><span class="nav-number">2.5.</span> <span class="nav-text">对象模型（对象树）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QT%E7%9A%84%E7%AA%97%E5%8F%A3%E5%9D%90%E6%A0%87%E4%BD%93%E7%B3%BB"><span class="nav-number">3.</span> <span class="nav-text">QT的窗口坐标体系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BF%A1%E5%8F%B7%E4%B8%8E%E6%A7%BD"><span class="nav-number">4.</span> <span class="nav-text">三、信号与槽</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E5%87%BD%E6%95%B0%E5%92%8C%E6%A7%BD%E5%87%BD%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%86%99%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">连接函数和槽函数的基本写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%A7%BD"><span class="nav-number">4.2.</span> <span class="nav-text">自定义信号和槽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%A1%E5%8F%B7%E5%92%8C%E6%A7%BD%E7%9A%84%E9%87%8D%E8%BD%BD"><span class="nav-number">4.3.</span> <span class="nav-text">自定义信号和槽的重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E8%BF%9E%E6%8E%A5%E4%BF%A1%E5%8F%B7"><span class="nav-number">4.4.</span> <span class="nav-text">信号连接信号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E5%8F%B7%E4%B8%8E%E6%A7%BD%E7%9A%84%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86"><span class="nav-number">4.5.</span> <span class="nav-text">信号与槽的补充知识</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81QMainWindow"><span class="nav-number">5.</span> <span class="nav-text">四、QMainWindow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E7%9A%84%E8%A1%A5%E5%85%85"><span class="nav-number">6.</span> <span class="nav-text">五、资源文件的补充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E6%96%87%E4%BB%B6"><span class="nav-number">6.1.</span> <span class="nav-text">图片文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6%E4%BB%A3%E7%A0%81%E9%98%85%E8%AF%BB"><span class="nav-number"></span> <span class="nav-text">框架代码阅读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-%E5%BD%A2%E8%80%8C%E4%B8%8A%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">0.形而上的理解：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E4%BB%A5%E5%9C%86%E7%9A%84%E7%BB%98%E5%88%B6%E4%B8%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">1.以圆的绘制为例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%A6%82%E4%BD%95%E5%8A%A0%E8%BD%BD%E5%9B%BE%E7%89%87%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">2.如何加载图片？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8EQt%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6qrc%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.1.</span> <span class="nav-text">关于Qt资源文件qrc的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%AE%A9%E5%9C%86%E5%8A%A8%E8%B5%B7%E6%9D%A5"><span class="nav-number">4.</span> <span class="nav-text">3. 让圆动起来</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -410,7 +551,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
