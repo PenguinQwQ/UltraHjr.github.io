@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ultrahjr.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="哈希表是一种有效的动态集合结构。 11.1 直接寻址表当关键字的全域较小，且有条件：不存在两个元素的关键字相同，则我们可以通过直接寻址表（direct-address table）来实现直接寻址。本质相当于桶排序中，将元素的key值作为数组下标进行访问、存储、修改和删除的操作。详细操作与definition在TC P143，不多赘述。 Exercise:1211.1-1 无论从那种方式遍历整个直接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="问题求解（二）2-11 hashing">
+<meta property="og:url" content="https://ultrahjr.github.io/2022/05/10/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3%EF%BC%88%E4%BA%8C%EF%BC%892-11-hashing/index.html">
+<meta property="og:site_name" content="Wind&#39;s Blog">
+<meta property="og:description" content="哈希表是一种有效的动态集合结构。 11.1 直接寻址表当关键字的全域较小，且有条件：不存在两个元素的关键字相同，则我们可以通过直接寻址表（direct-address table）来实现直接寻址。本质相当于桶排序中，将元素的key值作为数组下标进行访问、存储、修改和删除的操作。详细操作与definition在TC P143，不多赘述。 Exercise:1211.1-1 无论从那种方式遍历整个直接">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-10T01:38:13.000Z">
+<meta property="article:modified_time" content="2022-05-10T09:46:07.998Z">
+<meta property="article:author" content="Wind">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ultrahjr.github.io/2022/05/10/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3%EF%BC%88%E4%BA%8C%EF%BC%892-11-hashing/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>问题求解（二）2-11 hashing | Wind's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Wind's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry. Stay Foolish</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ultrahjr.github.io/2022/05/10/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3%EF%BC%88%E4%BA%8C%EF%BC%892-11-hashing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Wind">
+      <meta itemprop="description" content="Welcome to my Ark!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wind's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          问题求解（二）2-11 hashing
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-10 09:38:13 / 修改时间：17:46:07" itemprop="dateCreated datePublished" datetime="2022-05-10T09:38:13+08:00">2022-05-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/" itemprop="url" rel="index"><span itemprop="name">Computer Science</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Science/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">算法与数学</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Lecture-Notes/" itemprop="url" rel="index"><span itemprop="name">Lecture Notes</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Lecture-Notes/Problem-Solving/" itemprop="url" rel="index"><span itemprop="name">Problem Solving</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>哈希表是一种有效的动态集合结构。</p>
+<h2 id="11-1-直接寻址表"><a href="#11-1-直接寻址表" class="headerlink" title="11.1 直接寻址表"></a>11.1 直接寻址表</h2><p>当关键字的全域较小，且有条件：不存在两个元素的关键字相同，则我们可以通过直接寻址表（direct-address table）来实现直接寻址。本质相当于桶排序中，将元素的key值作为数组下标进行访问、存储、修改和删除的操作。详细操作与definition在TC P143，不多赘述。</p>
+<h3 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise:"></a>Exercise:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">11.1-1 无论从那种方式遍历整个直接寻址表都是可行的，但是时间复杂度上界均为O(m)。这是因为我们的key值分布是离散的，总存在需要遍历整个表的最坏对手策略。</span><br><span class="line">11.1-2 这里的位向量本身，可以看作一个状态压缩二进制数。设v[k]表示向量v的第k个基底的坐标，若v[k]=1则表示第k个元素在哈希表内，若v[k]=0则表示第k个元素不在哈希表内。那么，我们的INSERT,DELETE,SEARCH都是O(1)的时间复杂度。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>当题目要求证明字典操作的运行时间为O(1)时，这里的字典操作通常指的就是INSERT,DELETE,SEARCH三种。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">11.1-3 不大清楚当槽中存储的是链表时，如何分析时间复杂度，待定。</span><br><span class="line">11.1-4 待分析</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="11-2-哈希表"><a href="#11-2-哈希表" class="headerlink" title="11.2 哈希表"></a>11.2 哈希表</h2><p>  直接寻址技术的缺点是非常明显的：当我们key值的全域很大的时候，我们需要预先开一个大小为$|U|$ 的一张哈希表。而且由于实际存储的关键字集合$|K|$ 可能相比于$|U|$而言变得很小，这里开巨大的哈希表就会浪费巨量的空间资源。</p>
+<p>  为了避免空间的浪费，我们通过构造一个映射哈希函数$h(x)$，可以将空间复杂度降为$\Theta(|K|)$，即：$h: U \rightarrow \left{ 0,1,2,….m-1 \right}$ 这里就将$|U|$降为$|m|$了。</p>
+<p>  同时，当我们的key值存在相同的情况时，就会出现冲突collision。一个简单的想法是，通过构造一个和数的哈希函数h，保证h尽可能地随机，从而将冲突地可能或者次数最小化。（当然，对于同一个键值key，其哈希函数的映射结果应当不变，依旧为h(k)）</p>
+<p>我们有两种方法来解决冲突：其一为链接法（Chaining）、其二为开发寻址法（Open Addressing）</p>
+<h3 id="链接法："><a href="#链接法：" class="headerlink" title="链接法："></a>链接法：</h3><p>  链接法的本质，是通过将哈希到同一个槽中的所有元素都放到一个链表中。当槽中带有的链表是非空的时候，槽内应当有一个指针，它指向存储所有哈希到j的元素的链表的表头；如果不存在这样的元素，则槽j中为NIL。</p>
+<p>对于链接法实现的哈希表操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CHAINED-HASH-INSERT(T,x)</span><br><span class="line">	insert x at the head of list T(h(x.key)) </span><br><span class="line">将元素x插入到哈希表T中的操作：只需要取出x的键值key，将其进行哈希处理得到对应映射到的槽标号，然后取出其链表，将元素x插入到这个链表的表头上。</span><br><span class="line">插入操作的最坏运行时间为O(1)，只需要计算哈希函数和插入链表即可。</span><br><span class="line">CHAINED-HASH-SEARCH(T,k)</span><br><span class="line">	search for an element with key k in list T[h(k)]</span><br><span class="line">CHAINED-HASH-DELETE(T,x)</span><br><span class="line">	delete x from the list T[h(x.key)]</span><br></pre></td></tr></table></figure>
+
+<p>对于SEARCH操作，在对应的哈希函数结果的链表中搜索，是否存在键值为k的元素。对于删除操作，其复杂度在单链表情况下与SEARCH操作同阶，因为删除的时候需要先遍历链表T[h(x.key)]来找到前一个元素，然后再修改其后继节点。在双向链表情况下，复杂度为O(1)，因为我们传入的是元素x，所以不需要先在链表中搜索x。直接修改其前驱和后继节点即可。</p>
+<p>我们接下来分析其性能。特别的，我们分析一下：要查找一个具有给定关键字的元素需要多长的时间。</p>
+<p>  对于一个能存放n个元素、具有m个槽位的哈希表T，定义T的装载因子$\alpha &#x3D; \frac{n}{m}$，即一个链表的平均元素存放数目。</p>
+<p>  首先，对于最坏情况，即所有的元素都被哈希映射到同一个槽上，这里的复杂度是$\Theta(n)$，n为链表的长度。当然，我们通过构造合理的哈希函数可以避免这种最坏的情况，且并不因为最坏复杂度很劣而忽视其平均效率的优势。</p>
+<p>  定义：简单均匀哈希，我们假设，n个元素中任何一个关键字的元素都会被等可能地映射到m个槽的位置上，且与其他元素被哈希到什么位置上无关，成这个假设为简单均匀哈希。</p>
+<p>  设$n_i$表示第i个槽对应的链表的长度，显然有：$n &#x3D; \sum_{i &#x3D; 0}^{m-1} n_i$，并且$n_j$的期望为：$E[n_j] &#x3D; n \times \frac{1}{m} &#x3D; \alpha$</p>
+<p>我们不妨假设我们能够在O(1)的时间内计算出哈希值和访问槽链表。那么，当我们询问元素x时，查找的可能有两种：成功查找与不成功查找。下面的论证建立在简单均匀哈希的条件下：</p>
+<p>一、对于不成功查找的情况</p>
+<p>显然，我们从链表T[h(x.key)]的首元素遍历到尾元素，没有找到期望的元素x。那么，其期望时间就是查找到链表末尾的时间，而链表的期望长度已在上文给出，则期望时间为遍历链表和计算哈希值、访问槽链表常数时间之和为：$\Theta(1+\alpha)$</p>
+<p>二、对于成功查找的情况</p>
+<p>  我们假定要查找的元素是，表中存放的n个元素中的任何一个。且是等可能的，那么，每一次成功查找某个元素x的过程中，我们会遍历的元素就是x所在链表前面的每个元素加上x本身。而由于链表维护的过程中，所有x前面的元素，都是在x之后插入的。为了考察所检查的元素的期望数目，我们只需要计算在元素x之后，哈希到同一个槽链表的元素个数的期望值，再加1。然后再对n取平均。</p>
+<p>  不妨设$x_i$表示插入表中的第i个元素，考察$x_i$的关键字$k_i &#x3D; x_i.key$，对关键字$k_i, k_j, i &lt; j$定义指示器随机变量$X_{ij}&#x3D; I\left{ h(k_i) &#x3D; h(k_j) \right}$。我们的讨论基于简单均匀哈希，显然有：$Pr\left{ h(k_i) &#x3D; h(k_j) \right} &#x3D; \frac{m}{m \times m} &#x3D; \frac{1}{m}$，那么应当有：$E[X_{ij}] &#x3D; \frac{1}{m}$。则，在一次成功的查找中，所检查元素的期望数为</p>
+<p>$$<br>E[\frac{1}{n}\sum_{i &#x3D; 0}^{n - 1}(1 + \sum_{j &#x3D; i + 1}^{n - 1}X_{ij})] \&#x3D; \frac{1}{n}E[\sum_{i &#x3D; 0}^{n - 1}(1 + \sum_{j &#x3D; i + 1}^{n - 1}X_{ij}) \<br>&#x3D;  \frac{1}{n}E[\sum_{i &#x3D; 0}^{n - 1}(1 + \sum_{j &#x3D; i + 1}^{n - 1}\frac{1}{m})] \<br>&#x3D; \frac{1}{n}(n + \sum_{i &#x3D; 0}^{n - 1}\sum_{j &#x3D; i + 1}^{n - 1}\frac{1}{m}) \<br>&#x3D; 1 +\frac{1}{nm}\sum_{i &#x3D; 0}^{n - 1}\sum_{j &#x3D; i + 1}^{n - 1}1  \<br>&#x3D; 1 + \frac{1}{nm}\sum_{i &#x3D; 0}^{n - 1}(n -  i) \<br>&#x3D;  1 + \frac{1}{nm}(n^2 - \frac{n(n-1)}{2}) \<br>&#x3D;  1 + \frac{n}{m} - \frac{n-1}{2m} \<br>&#x3D; \Theta(1 + \alpha)<br>$$</p>
+<p>综上所述，一次查找的时间复杂度为$\Theta(1 + \alpha)$，而当哈希表中的槽数至少与表中成正比的时候，则有$n &#x3D; O(m)$，从而有：$\alpha &#x3D; \frac{n}{m} &#x3D; \frac{O(m)}{m} &#x3D; O(1)$。所以，查找操作平均上需要常数时间。而当链表采用双向连接时，插入操作在最坏情况下需要O(1)时间，删除也需要O(1)时间，所以平均情况下，可以在O(1)时间内完成所有的字典操作。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/16/%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" rel="prev" title="面向对象/OOP/C++">
+      <i class="fa fa-chevron-left"></i> 面向对象/OOP/C++
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#11-1-%E7%9B%B4%E6%8E%A5%E5%AF%BB%E5%9D%80%E8%A1%A8"><span class="nav-number">1.</span> <span class="nav-text">11.1 直接寻址表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Exercise"><span class="nav-number">1.1.</span> <span class="nav-text">Exercise:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-2-%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text">11.2 哈希表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E6%B3%95%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">链接法：</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wind"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Wind</p>
+  <div class="site-description" itemprop="description">Welcome to my Ark!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wind</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
