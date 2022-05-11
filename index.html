@@ -187,7 +187,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/05/10/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3%EF%BC%88%E4%BA%8C%EF%BC%892-11-hashing/" class="post-title-link" itemprop="url">问题求解（二）2-11 hashing</a>
+            <a href="/2022/05/10/%E9%97%AE%E9%A2%98%E6%B1%82%E8%A7%A3%EF%BC%88%E4%BA%8C%EF%BC%892-11-hashing/" class="post-title-link" itemprop="url">问题求解（二）2-12 hashing</a>
         </h2>
 
         <div class="post-meta">
@@ -196,10 +196,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-05-10 09:38:13 / 修改时间：19:13:02" itemprop="dateCreated datePublished" datetime="2022-05-10T09:38:13+08:00">2022-05-10</time>
+              <time title="创建时间：2022-05-10 09:38:13" itemprop="dateCreated datePublished" datetime="2022-05-10T09:38:13+08:00">2022-05-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-11 16:37:37" itemprop="dateModified" datetime="2022-05-11T16:37:37+08:00">2022-05-11</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -265,7 +271,39 @@
 <p>  我们假定要查找的元素是，表中存放的n个元素中的任何一个。且是等可能的，那么，每一次成功查找某个元素x的过程中，我们会遍历的元素就是x所在链表前面的每个元素加上x本身。而由于链表维护的过程中，所有x前面的元素，都是在x之后插入的。为了考察所检查的元素的期望数目，我们只需要计算在元素x之后，哈希到同一个槽链表的元素个数的期望值，再加1。然后再对n取平均。</p>
 <p>  不妨设$x_i$表示插入表中的第i个元素，考察$x_i$的关键字$k_i &#x3D; x_i.key$，对关键字$k_i, k_j, i &lt; j$定义指示器随机变量$X_{ij}&#x3D; I\lbrace h(k_i) &#x3D; h(k_j) \rbrace$。我们的讨论基于简单均匀哈希，显然有：$Pr\lbrace h(k_i) &#x3D; h(k_j) \rbrace &#x3D; \frac{m}{m \times m} &#x3D; \frac{1}{m}$，那么应当有：$E[X_{ij}] &#x3D; \frac{1}{m}$。则，在一次成功的查找中，所检查元素的期望数为</p>
 <p>$$<br>E[\frac{1}{n}\sum_{i &#x3D; 0}^{n - 1}(1 + \sum_{j &#x3D; i + 1}^{n - 1}X_{ij})] \ &#x3D; \frac{1}{n}E[\sum_{i &#x3D; 0}^{n - 1}(1 + \sum_{j &#x3D; i + 1}^{n - 1}X_{ij}) \<br>&#x3D;  \frac{1}{n}E[\sum_{i &#x3D; 0}^{n - 1}(1 + \sum_{j &#x3D; i + 1}^{n - 1}\frac{1}{m})] \<br>&#x3D; \frac{1}{n}(n + \sum_{i &#x3D; 0}^{n - 1}\sum_{j &#x3D; i + 1}^{n - 1}\frac{1}{m}) \<br>&#x3D; 1 +\frac{1}{nm}\sum_{i &#x3D; 0}^{n - 1}\sum_{j &#x3D; i + 1}^{n - 1}1  \<br>&#x3D; 1 + \frac{1}{nm}\sum_{i &#x3D; 0}^{n - 1}(n -  i) \<br>&#x3D;  1 + \frac{1}{nm}(n^2 - \frac{n(n-1)}{2}) \<br>&#x3D;  1 + \frac{n}{m} - \frac{n-1}{2m} \<br>&#x3D; \Theta(1 + \alpha)<br>$$</p>
-<p>综上所述，一次查找的时间复杂度为$\Theta(1 + \alpha)$，而当哈希表中的槽数至少与表中成正比的时候，则有$n &#x3D; O(m)$，从而有：$\alpha &#x3D; \frac{n}{m} &#x3D; \frac{O(m)}{m} &#x3D; O(1)$。所以，查找操作平均上需要常数时间。而当链表采用双向连接时，插入操作在最坏情况下需要O(1)时间，删除也需要O(1)时间，所以平均情况下，可以在O(1)时间内完成所有的字典操作。</p>
+<p>综上所述，<strong>一次查找的时间复杂度为$\Theta(1 + \alpha)$，而当哈希表中的槽数至少与表中成正比的时候，则有$n &#x3D; O(m)$，从而有：$\alpha &#x3D; \frac{n}{m} &#x3D; \frac{O(m)}{m} &#x3D; O(1)$。所以，查找操作平均上需要常数时间。而当链表采用双向连接时，插入操作在最坏情况下需要O(1)时间，删除也需要O(1)时间，所以平均情况下，可以在O(1)时间内完成所有的字典操作。</strong></p>
+<h3 id="11-3-哈希函数"><a href="#11-3-哈希函数" class="headerlink" title="11.3 哈希函数"></a>11.3 哈希函数</h3><p>算法导论上给出了两种构造哈希函数的方法：分别是乘法哈希和除法哈希，具体内容见TC P147即可。</p>
+<p>还有一种哈希方法：全域哈希，这是为了防止一个恶意的对手通过构造关键字序列来针对选择的哈希函数。这样构造的关键字会将所有的元素都哈希映射到同一个槽上。为了应对这种策略，唯一有效的改进方法就是：随机地选择哈希函数，使之独立于要存储的关键字，这种方法就称为全域哈希。</p>
+<p><strong>设A表示一组哈希函数，它将给定的关键字全域$|U|$哈希映射到$\lbrace 0,1,…m-1\rbrace$上，这样的一个函数族称之为全域的（universal），如果对于每一对不同的关键字$i, j$，满足$h(i) &#x3D; h(j) $的哈希函数$h \in A$的个数不超过$\frac{|A|}{m}$，也就是说，我们随机地从函数族A中选取一个哈希函数h，它导致关键字i和j发生冲突的概率为$\frac{1}{m}$ ，而这个概率也恰好是从上述集合中随机选择$h(k), h(l)$时发生冲突的概率。</strong></p>
+<p>定理11.3表明，全域哈希函数类的平均性态是比较好的。</p>
+<p><strong>定理11.3：如果h选自一组全域哈希函数，将n个关键字哈希到一个大小为m的表T中，并且用链接法解决冲突。如果关键字k不在表中，则k被哈希到其中的链表的期望长度至多为$E[n_{h(k)}] &#x3D; \alpha &#x3D; \frac{n}{m}$ , 如果关键字k在表中，则包含关键字k的链表的期望长度至多为$\alpha + 1$</strong></p>
+<p>证明：我们首先注意到，这里的期望是与哈希函数的选择、关键字的分布是无关的，因为我们的h是选自一组全域哈希函数。那么根据全域哈希假设，可知对于任意两个关键字$k, l$，概率$Pr\lbrace h(k) &#x3D; h(l) \rbrace \leq \frac{1}{m}$。那么，定义指示器随机变量$X_{kl} &#x3D; I\lbrace h(k) &#x3D; h(l) \rbrace$， 则$E[X_{kl}] \leq \frac{1}{m}$。接下来，设$Y_k$表示和关键字k哈希到同一槽处的元素个数，则有：<br>$$<br>Y_k &#x3D; \sum_{l \in T, l \ne k}X_{kl}\<br>E[Y_k] &#x3D; E[\sum_{l \in T, l \ne k}X_{kl}] &#x3D; \sum_{l \in T, l \ne k}E[X_{kl}]\<br>$$<br>接下来，对k在哈希表中的位置进行分类讨论：</p>
+<ul>
+<li>若关键字k之前并没有出现在链表中，则关键字k对应的哈希链表长度$n_{h(k)} &#x3D; Y_k$，且对于集合$|\lbrace l \in T, l \ne k \rbrace| &#x3D; n$，那么，有</li>
+</ul>
+<p>$$<br>length &#x3D; E[Y_k] &#x3D; \sum_{l \in T, l \ne k}E[X_{kl}] &#x3D; \sum_{l &#x3D; 1}^{n} E[X_{kl}] \leq \frac{n}{m} &#x3D; \alpha &#x3D; O(\alpha + 1)\<br>$$</p>
+<ul>
+<li>若关键字k之前出现在链表中，则关键字k对应的哈希链表长度为$n_{h(k)} &#x3D; Y_k + 1$，且对于集合$|\lbrace l \in T, l \ne k \rbrace| &#x3D; n - 1$所以有：</li>
+</ul>
+<p>$$<br>length &#x3D; 1 + E[Y_k] &#x3D; 1 + \sum_{l \in T, l \ne k}E[X_{kl}] &#x3D; 1 + \sum_{l &#x3D; 1, l\ne k}^{n} E[X_{kl}] \leq 1 +  \frac{n-1}{m} &#x3D; 1 + \alpha - \frac{1}{m} &#x3D; O(1 + \alpha)\<br>$$</p>
+<p>所以综上所述，关键字在哈希表中对应槽的链表期望长度为$O(1 + \alpha)$，而当$\alpha$与n成正比时，这个平均的时间开销是O(1)的！所以，上述分析就证明了，全域哈希函数在槽数与全域规模是线性关系的时候，其平均性能是很优秀的。</p>
+<p><strong>推论11.4：对于一个具有m个槽位且初始时为空的表，利用全域哈希法和链接法解决冲突，需要$\Theta(n)$的期望时间来处理任何包含了n个INSERT,SEARCH和DELETE的操作序列，其中该序列包含了$O(m)$个INSERT操作。</strong></p>
+<p>证明：首先，由于我们INSERT的次数为$O(m)$，因此，总的元素个数$n &#x3D; O(m)$，故有$\alpha &#x3D; \frac{n}{m} &#x3D; \frac{O(m)}{m} &#x3D; O(1)$。根据定理11.3，每一个SEARCH的实际时间是和$\alpha$成线性关系的，所以时间开销为$O(1)$。然后，由于INSERT操作和DELETE操作都只需要常数时间，根据期望的线性性质可知：总的n个操作的序列总的时间开销为$O(n)$。然后由于每个操作所用时间为：$\Omega(1)$，所以$\Theta(n)$的界成立。</p>
+<p><strong>设计一个全域哈希函数类：也就是设计这样的哈希函数族，满足从中随机抽取一个哈希函数h，其对于关键字全域$|U|$中任意两个元素k,l，发生冲突的概率不超过$\frac{1}{m}$。这里的m是我们提供的槽的数目</strong></p>
+<p>选择一个足够大的素数p。使得每一个可能的关键字k都落在0 - p-1的范围内。（包括0和p-1）。设集合$Z_p$代表集合$\lbrace 0,1,…..p-1\rbrace$，$Z_p^*$表示集合$\lbrace 1, … p-1 \rbrace$ 。由于p是一个素数，根据第31章给出的求解模数方程的方法可以求解之。由于我们假定关键字的全域大于哈希表中的槽数，则有$p &gt; m$。</p>
+<p>现在，对于$\forall a \in Z_p^*, b \in Z_p$，定义哈希函数$h_{ab} &#x3D; ((ak + b) modp) mod m$，这样构成的函数族A就是：$A &#x3D; \lbrace h_{ab},a \in Z_p^*, b \in Z_p \rbrace$。注意，这里a的选择有p-1中，需要将0排除在外，因为若选择到了0，则线性变换进行的就是一个零变换，会将输入的关键字k的效果抹去。而b有p中选择，故这个函数族的势为：$|A| &#x3D; p(p-1)$</p>
+<p>上述方法定义的哈希函数具有一个良好的性质，即输出范围的大小m是任意的，不必是一个素数。</p>
+<p><strong>定理11.5 上述方法定义的哈希函数族A是全域的。</strong></p>
+<p>我们只需要证明，对于全域U中任意的两个不同的关键字k,l。在上述哈希函数族中随机选择一个哈希函数，两者发生冲突的概率不超过$\frac{1}{m}$</p>
+<p>首先，考察两者在模p意义下的部分数r，s<br>$$<br>r &#x3D; (ak + b)mod p \<br>s &#x3D; (al + b)mod p<br>$$<br>然后，两边在模p的意义下做差有：$r-s \equiv a(k-l)modp$，由于a对p取模非0，k-l对p取模也非0，则两者乘积后取模也非0，则必有r、s不等。所以，在模p的维度上，并不会发生冲突。</p>
+<p>这一点也是很好理解的，因为单单做到这一步，其实是做了上面的直接寻址（浪费空间）而这样做并不会发生冲突。之后我们再对m取模，就会产生冲突了。</p>
+<p>此外，我们的数对(a,b)一共有p(p-1)种选择，如何解释这点？因为我们可以根据r和s反解出a、b的值。也即，这里的每一对数对(a,b)和p(p-1)个数对(r,s)之间存在一个一一对应的关系。于是，对于任意给定的输入对k和l，如果均匀地随机选择(a,b)，则结果数对(r,s)就等可能地位任何不同的数值对。所以，当r和s为随机选择的不同的值的时候（注意，我们这里的，r和s随机选择不同的值，其实就是在哈希函数族中随机取了某个哈希函数，使得r和s有对应的值，全域里面随机哈希函数就体现在这里），不同的关键字k和l发生冲突的概率，等于$r \equiv s (modm)$的概率。而，我们根据同余类的知识可知，满足两者有相同余数，且在0-p-1范围内的元素个数为：$\lceil \frac{p}{m} \rceil - 1 \leq \frac{p + m - 1}{m} - 1 &#x3D; \frac{p-1}{m}$。则，我们可以得出任意的两个元素发生冲突的概率为：$Pr\lbrace h(k) &#x3D; h(l)\rbrace &#x3D; \frac{\lceil \frac{p}{m} \rceil - 1 }{p - 1} \leq \frac{1}{m}$，所以，全域条件得证。</p>
+<h3 id="11-4-开放寻址法"><a href="#11-4-开放寻址法" class="headerlink" title="11.4 开放寻址法"></a>11.4 开放寻址法</h3><p>开放寻址法也是解决冲突的一种手段。但是，这种方法需要限制装载因子$\alpha \leq 1$。否则，这个哈希表就可能被填满，以至于不能插入任何新的元素。</p>
+<p>当查找某个元素的时候，需要系统地检查所有地表项，直到找到所需的元素。或者最终查明这个元素不在表中。</p>
+<p>为了使用开放寻址法插入一个元素，我们需要连续地检查哈希表。这个过程称为探查。直到找到一个空槽来放置待插入的关键字为止。检查的顺序不一定是0，1，….m-1（这种顺序为$\Theta(n)$）。而是要依赖待插入的关键字。</p>
+<p>为了确定要探查那些槽，我们将哈希函数加以扩充，使之包含探查号以作为其第二个输入参数。这样，哈希函数就变为：$h: U \times \lbrace 0, 1, 2, … m-1\rbrace \rightarrow \lbrace 0, 1, 2, … m-1\rbrace$。对每一个关键字k，使用开放寻址法的探查序列：$&lt;h(k,0), h(k, 1), ….h(k, m-1)&gt;$，这个序列是$\lbrace 0, 1, …m-1\rbrace$的一个排列。</p>
+<p>对于INSERT和SEARCH操作，我们只需要遍历上面这个探查序列即可。对于INSERT，找到NIL的槽就可进行存储；而SEARCH操作遇到NIL或者已满，就代表没有找到。</p>
+<p>对于DELETE操作，一般不用开放寻址法来考察。直接对T[k]置为NIL会导致能遍历到k处的，后续插入节点的丢失。无法遍历到他们了。</p>
 
       
     </div>
@@ -902,7 +940,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-10 09:50:53" itemprop="dateModified" datetime="2022-05-10T09:50:53+08:00">2022-05-10</time>
+                <time title="修改时间：2022-05-10 19:17:06" itemprop="dateModified" datetime="2022-05-10T19:17:06+08:00">2022-05-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -961,6 +999,11 @@
 <p>注意，我们这里的文件路径不需要填写绝对路径。只需要填写在source文件夹内，_Post文件夹中，对应文件管理器中图片的名字即可！</p>
 <p>另外，对于网络图片，我们可以在括号内添加网址即可实现加载！</p>
 <p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.zhimg.com%2Fv2-efe56ba165422131f310fe541212faa8_1440w.jpg%3Fsource%3D172ae18b&refer=http%3A%2F%2Fpic1.zhimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651489035&t=8a6a0245cf21fbad3faf99601e2f9bd5"></p>
+<p>对于花括号的输入，不能用传统的LaTex代码来实现，而应当使用如下的格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ \lbrace CONTENT \rbrace $</span><br></pre></td></tr></table></figure>
+
+<p>这样直接进行范围界定才能在服务器正常显示</p>
+<p>效果：$\lbrace x_1, x_2, … x_n\rbrace$</p>
 
       
     </div>
