@@ -20,30 +20,33 @@
     var CONFIG = {"hostname":"ultrahjr.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Welcome to my Ark!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wind&#39;s Blog">
-<meta property="og:url" content="https://ultrahjr.github.io/index.html">
+  <meta name="description" content="0x01节 搜索与树基础来源：《算法竞赛进阶指南》、OI wiki 1.通过dfs能够得到&#x2F;维护的信息自顶向下深度优先搜索一颗树可以找到的信息：树的dfs序、树的先&#x2F;中&#x2F;后序遍历、树的深度、树的子树大小、子树的最大值&#x2F;最小值&#x2F;次大值等等可以合并维护的信息。 其中树的dfs序长度应该为所有节点的2倍。在dfs的时候，分别在遍历到和退出的时候记录一下当">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OI学习：图论与树">
+<meta property="og:url" content="https://ultrahjr.github.io/2022/10/31/OI-Graph-1/index.html">
 <meta property="og:site_name" content="Wind&#39;s Blog">
-<meta property="og:description" content="Welcome to my Ark!">
+<meta property="og:description" content="0x01节 搜索与树基础来源：《算法竞赛进阶指南》、OI wiki 1.通过dfs能够得到&#x2F;维护的信息自顶向下深度优先搜索一颗树可以找到的信息：树的dfs序、树的先&#x2F;中&#x2F;后序遍历、树的深度、树的子树大小、子树的最大值&#x2F;最小值&#x2F;次大值等等可以合并维护的信息。 其中树的dfs序长度应该为所有节点的2倍。在dfs的时候，分别在遍历到和退出的时候记录一下当">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-31T06:16:11.000Z">
+<meta property="article:modified_time" content="2022-10-31T10:44:54.523Z">
 <meta property="article:author" content="Wind">
+<meta property="article:tag" content="OI">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://ultrahjr.github.io/">
+<link rel="canonical" href="https://ultrahjr.github.io/2022/10/31/OI-Graph-1/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Wind's Blog</title>
+  <title>OI学习：图论与树 | Wind's Blog</title>
   
 
 
@@ -167,9 +170,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -185,10 +189,9 @@
       <meta itemprop="name" content="Wind's Blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/10/31/OI-Graph-1/" class="post-title-link" itemprop="url">OI学习：图论与树</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          OI学习：图论与树
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -212,7 +215,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="0x01节-搜索与树基础"><a href="#0x01节-搜索与树基础" class="headerlink" title="0x01节 搜索与树基础"></a>0x01节 搜索与树基础</h2><p>来源：《算法竞赛进阶指南》、OI wiki</p>
+        <h2 id="0x01节-搜索与树基础"><a href="#0x01节-搜索与树基础" class="headerlink" title="0x01节 搜索与树基础"></a>0x01节 搜索与树基础</h2><p>来源：《算法竞赛进阶指南》、OI wiki</p>
 <h3 id="1-通过dfs能够得到-x2F-维护的信息"><a href="#1-通过dfs能够得到-x2F-维护的信息" class="headerlink" title="1.通过dfs能够得到&#x2F;维护的信息"></a>1.通过dfs能够得到&#x2F;维护的信息</h3><p>自顶向下深度优先搜索一颗树可以找到的信息：树的dfs序、树的先&#x2F;中&#x2F;后序遍历、树的深度、树的子树大小、子树的最大值&#x2F;最小值&#x2F;次大值等等可以合并维护的信息。</p>
 <p>其中树的dfs序长度应该为所有节点的2倍。在dfs的时候，分别在遍历到和退出的时候记录一下当前的dfs序。<strong>对于节点x在dfs序区间，[L[x] , R[x ] ]中的所有结点都是x为根子树对应的dfs序！</strong></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39670434/article/details/78425125">https://blog.csdn.net/qq_39670434/article/details/78425125</a></p>
@@ -294,367 +297,33 @@
 <p>显然，要让每个点都被遍历到，只需要从每一个入度为0的结点出发就行了。所以第一问就是入度为0的点的数目。</p>
 <p>对于第二问，有结论：将一张有向无环图补成一张强连通图，所需添加的边数为max(p,q)。其中p为入度为0的结点个数，q为出度为0的节点个数。</p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/OI/" rel="tag"># OI</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ultrahjr.github.io/2022/10/30/verilog-learing-one/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Wind">
-      <meta itemprop="description" content="Welcome to my Ark!">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wind's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/10/30/verilog-learing-one/" class="post-title-link" itemprop="url">verilog-learing-one</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-10-30 09:28:17 / 修改时间：09:28:18" itemprop="dateCreated datePublished" datetime="2022-10-30T09:28:17+08:00">2022-10-30</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/10/30/verilog-learing-one/" rel="prev" title="verilog-learing-one">
+      <i class="fa fa-chevron-left"></i> verilog-learing-one
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ultrahjr.github.io/2022/07/04/Stanford-Machine-Learning-Andrew-Ng/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Wind">
-      <meta itemprop="description" content="Welcome to my Ark!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wind's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/07/04/Stanford-Machine-Learning-Andrew-Ng/" class="post-title-link" itemprop="url">Lecture Notes On Machine Learning(Stanford Andrew Ng)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-07-04 10:59:37" itemprop="dateCreated datePublished" datetime="2022-07-04T10:59:37+08:00">2022-07-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-09 22:59:31" itemprop="dateModified" datetime="2022-07-09T22:59:31+08:00">2022-07-09</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>英语专业词汇内容：</p>
-<p>eigenvector 特征向量</p>
-<p>supervised learning 监督学习，机器学习中应用最广泛的工具之一。</p>
-<p>scalars 标量</p>
-<p>lower&#x2F;upper case 小&#x2F;大写字母</p>
-<p>singular matrix 奇异矩阵&#x2F;退化矩阵，指没有逆矩阵的矩阵</p>
-<p>反向传播学习算法（back propagation learning algorithm）</p>
-<p>梯度下降（gradient descents）</p>
-<p>unsupervised learning 无监督学习</p>
-<p>鸡尾酒会问题 ICA Independent Components Analysis</p>
-<p>强化学习：让训练目标自由表现，给出相应的表现反馈评分。</p>
-<p>2022&#x2F;7&#x2F;6</p>
-<p>机器学习：是AI领域工作的衍生，对计算机一种新的技术。</p>
-<p>应用举例：数据库挖掘，从自动化&#x2F;网站上的大规模数据集、医疗记录等等；机器学习还可以用于编写人类无法编写的程序（NLP、CV、手写识别、自动驾驶）、自我适应项目（Amazon等）</p>
-<p><strong>机器学习的定义：</strong>（Arthur Samuel)：在没有明确设置的条件下，使计算机具有学习能力的研究领域。</p>
-<p>Tom Mitchell Well-posed learning Problem: A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E. T是所需要完成的任务，P是对完成任务程度的度量，E是经验。</p>
-<p>监督学习：我们教计算机如何学习；每个数据集中都已经被清楚告知了什么是正确的&#x2F;错误的。</p>
-<p>无监督学习：让计算机如何自己学习。</p>
-<p><strong>回归问题：</strong>通过数据集寻找一个特定的拟合映射，以达到预测因变量的目的。且通常要预测的值y是连续的。（预测房价）通过已有的一些数据来预测连续的数值输出。</p>
-<p><strong>分类问题：</strong>分类是指目标因变量Y具有离散数量的变量。（癌症状态01…）</p>
-<p>逻辑回归算法（logistic regression algorithm）</p>
-<p>向量机：可以用无穷维的状态刻画一个输入。kernals内核可以辅助实现。</p>
-<p>不论是无限维的输入特征向量，还是无限维的输出特征向量，都可以使用向量机来实现。</p>
-<p>使用Octave，免费的开源软件，或者matlab等，都可以非常简便地实现。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;cstdio&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ultrahjr.github.io/2022/07/03/Lecture-Notes-On-ICS-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Wind">
-      <meta itemprop="description" content="Welcome to my Ark!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wind's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/07/03/Lecture-Notes-On-ICS-1/" class="post-title-link" itemprop="url">Lecture Notes On ICS (1)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-07-03 17:25:01 / 修改时间：23:01:59" itemprop="dateCreated datePublished" datetime="2022-07-03T17:25:01+08:00">2022-07-03</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>冯诺依曼设计“存储程序”的计算机，最重要的思想是“存储程序”。</p>
-<p>工作方式：</p>
-<p>任何要计算机完成的工作都要先被编写成程序，然后将程序和原始数据送入贮存并启动执行，一旦程序被启动，计算机应能在不需操作人员干预下，自动完成逐条取出指令和执行指令的任务。</p>
-<p><strong>机器级语言</strong>：汇编语言、二进制代码语言（与具体机器结构有关）</p>
-<p><strong>高级语言的特点</strong>：与具体机器结构无关、面向算法描述、比机器级语言描述能力强得多、高级语言中一条语句对应很多指令、有“面向过程”和“面向对象”的语言之分，处理逻辑分为三种结构：循环结构、顺序结构、选择结构。</p>
-<p>高级语言和机器级语言的转换，有两种方式：<strong>“编译”和“解释”</strong></p>
-<p><strong>编译程序(Compiler)：</strong>将高级语言源程序转换为机器级目标程序（汇编语言描述的目标程序，后面还需要通过汇编程序转换为机器语言目标程序，或者直接机器语言描述的目标程序），执行时只要启动目标程序即可。</p>
-<p>**解释程序(Interpreter)**：将高级语言语句逐条翻译成机器指令并立即执行，不生成目标文件。</p>
-<p><strong>一个典型程序的转换处理过程：</strong></p>
-<p>源程序hello.c以文本的形式存在，首先经过预处理程序变为文本源程序hello.i（这个过程中会进行宏替换），然后再经过编译，将源文件转换位汇编语言程序（hello.s，依旧是文本的形式），再经过汇编过程，将汇编程序转换位可重定位目标程序（二进制），这些可重定位的二进制文件再经过链接，最终生成可执行目标程序。</p>
-<p><strong>语言处理系统</strong>包括：各种语言处理程序（如编译、汇编、链接）、运行时系统（如库函数、调试、优化等功能）</p>
-<p><strong>操作系统</strong>：包括人机交互界面、提供服务功能的内核例程。</p>
-<p><strong>计算机系统的不同用户：</strong></p>
-<p><strong>最终用户：</strong>工作在由应用程序提供的最上面的抽象层</p>
-<p><strong>系统管理员：</strong>工作在由操作系统提供的抽象层</p>
-<p><strong>应用程序员：</strong>工作在由语言处理系统（主要有编译器和汇编器）的抽象层，语言处理系统建立在操作系统之上。</p>
-<p>系统程序员（实现系统软件）工作在ISA层次，必须对ISA非常了解。</p>
-<p>编译器和汇编器的目标程序由机器级代码组成。</p>
-<p>操作系统通过指令直接对硬件进行编程控制</p>
-<p>ISA处于软件和硬件的交界面（接口），是对硬件的抽象，是软件的基础。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://ultrahjr.github.io/2022/04/02/Test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Wind">
-      <meta itemprop="description" content="Welcome to my Ark!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wind's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/02/Test/" class="post-title-link" itemprop="url">基础Hexo博客使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-02 16:52:24" itemprop="dateCreated datePublished" datetime="2022-04-02T16:52:24+08:00">2022-04-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-03 17:26:27" itemprop="dateModified" datetime="2022-07-03T17:26:27+08:00">2022-07-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo%E5%8D%9A%E5%AE%A2%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">Hexo博客技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1-基础Hexo指令"><a href="#1-基础Hexo指令" class="headerlink" title="1. 基础Hexo指令"></a>1. 基础Hexo指令</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server </span><br></pre></td></tr></table></figure>
-
-<p>将hexo服务器在本地开启，可以通过local端口访问查看实际效果。可用s替代server</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>生成静态的配置文件，generate可简写为g</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>将生成的hexo文件内容部署到远程仓库中，实现远端页面的内容更新和维护。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
-
-<p>清除hexo文件的缓存，用于数据更新的时候重新生成静态文件。</p>
-<h1 id="2-添加新文章、页面"><a href="#2-添加新文章、页面" class="headerlink" title="2. 添加新文章、页面"></a>2. 添加新文章、页面</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &lt;layout&gt; [name]</span><br></pre></td></tr></table></figure>
-
-<p>layout用于选择生成新文件的格式。默认为post。[name]处填写需要生成的文件名，需要加双引号。此外还有page、draft两种layout.前者是一种页面格式，用于生成类似category、tags左边栏的分类文件内容。</p>
-<p>例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new page categories</span><br></pre></td></tr></table></figure>
-
-<p>添加了分类页面。</p>
-<p>接着，在分类文件夹中，找到index.md，这是分类页面的配置markdown文本。将其内容进行适当修改，格式如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: xxx..</span><br><span class="line">type: categories</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p>最下面的type用于文章front-matter的设置，可以在文章的题头写上：</p>
-<p>categories: 数学,则这篇文章就会被分到“数学”这一类内容上。</p>
-<h1 id="3-添加图片内容"><a href="#3-添加图片内容" class="headerlink" title="3.添加图片内容"></a>3.添加图片内容</h1><p>在使用插件hexo-renderer-marked之后，可以用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![](image.jpg)</span><br></pre></td></tr></table></figure>
-
-<p>的方式添加文件。同时，这里的image.jpg应当存储在文章对应的文件资源管理文件夹中。</p>
-<p><img src="/2022/04/02/Test/1.png" alt="1"></p>
-<p>注意，我们这里的文件路径不需要填写绝对路径。只需要填写在source文件夹内，_Post文件夹中，对应文件管理器中图片的名字即可！</p>
-<p>另外，对于网络图片，我们可以在括号内添加网址即可实现加载！</p>
-<p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.zhimg.com%2Fv2-efe56ba165422131f310fe541212faa8_1440w.jpg%3Fsource%3D172ae18b&refer=http%3A%2F%2Fpic1.zhimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1651489035&t=8a6a0245cf21fbad3faf99601e2f9bd5"></p>
-<p>对于花括号的输入，不能用传统的LaTex代码来实现，而应当使用如下的格式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ \lbrace CONTENT \rbrace $</span><br></pre></td></tr></table></figure>
-
-<p>这样直接进行范围界定才能在服务器正常显示</p>
-<p>效果：$\lbrace x_1, x_2, … x_n\rbrace$</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -707,6 +376,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01%E8%8A%82-%E6%90%9C%E7%B4%A2%E4%B8%8E%E6%A0%91%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">0x01节 搜索与树基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%80%9A%E8%BF%87dfs%E8%83%BD%E5%A4%9F%E5%BE%97%E5%88%B0-x2F-%E7%BB%B4%E6%8A%A4%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="nav-number">1.1.</span> <span class="nav-text">1.通过dfs能够得到&#x2F;维护的信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%A0%91%E7%9A%84%E9%87%8D%E5%BF%83"><span class="nav-number">1.2.</span> <span class="nav-text">2.树的重心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84"><span class="nav-number">1.3.</span> <span class="nav-text">3. 树的直径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BF%83"><span class="nav-number">1.4.</span> <span class="nav-text">4.树的中心</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-Tarjan%E7%AE%97%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">0x02 Tarjan算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Tarjan%E7%AE%97%E6%B3%95%E6%B1%82%E8%A7%A3%E6%97%A0%E5%90%91%E5%9B%BE%E7%9A%84%E5%89%B2%E7%82%B9%E5%92%8C%E6%A1%A5"><span class="nav-number">2.1.</span> <span class="nav-text">1.Tarjan算法求解无向图的割点和桥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Tarjan%E7%AE%97%E6%B3%95%E6%B1%82%E6%9C%89%E5%90%91%E5%9B%BE%E7%9A%84%E5%BC%BA%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F-x2F-%E7%BC%A9%E7%82%B9"><span class="nav-number">2.2.</span> <span class="nav-text">2. Tarjan算法求有向图的强连通分量&#x2F;缩点</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
